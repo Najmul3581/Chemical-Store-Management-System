@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chemical Store Management System</title>
+<link rel="stylesheet" href="style.css"></head><body>
+<header><div class="logo">🧪 <b>Chemical Store Management System</b></div>
+<nav id="nav"><button data-p="dash" class="on">📊 <span>Dashboard</span></button><button data-p="issue">📝 <span>Batch Issue</span></button>
+<button data-p="entry">➕ <span>Item Entry</span></button><button data-p="rec">📚 <span>Records</span></button></nav></header>
+<main>
+<section id="dash" class="page on"><h2>Dashboard</h2>
+<div class="box"><div class="tabs" id="dtabs"><button data-p="today">Today</button><button data-p="7" class="on">Last 7 days</button><button data-p="month">This month</button><button data-p="custom">Custom</button></div>
+<div class="row" id="dcustom" style="display:none"><label>From<input type="date" id="df"></label><label>To<input type="date" id="dt"></label><button class="btn" id="dgo">Apply</button></div>
+<small id="dlabel" class="pill"></small></div>
+<div class="cards" id="dkpi"></div>
+<div class="grid2"><div class="box"><h3>Daily trend <span class="lg"><i class="ch"></i>Chemical <i class="dy"></i>Dyes</span></h3><div id="bars" class="bars"></div></div>
+<div class="box"><h3>Chemical vs Dyes</h3><div id="donut"></div></div></div>
+<div class="grid2"><div class="box"><h3>Top 10 items</h3><div id="top"></div></div>
+<div class="box"><h3>Top 5 batches (highest use)</h3><div id="topb"></div></div></div></section>
+
+<section id="issue" class="page"><h2>Batch Issue</h2><div class="box">
+<div class="row"><label>Batch No<input id="bno" placeholder="NKCD12345-001"></label>
+<label>Date<input type="date" id="bdate"></label></div>
+<div id="lines"></div><button class="btn ghost" id="addline">+ Add item</button>
+<button class="btn" id="save">Save Issue</button></div></section>
+
+<section id="entry" class="page"><h2>Chemical / Dyes Entry</h2><div class="grid2"><div class="box">
+<h3>New item</h3><label>Name<input id="iname" placeholder="e.g. SODA ASH"></label>
+<label>Category<select id="icat"><option>Chemical</option><option>Dye</option></select></label>
+<button class="btn" id="iadd">Add Item</button></div>
+<div class="box"><h3>Items <span id="icount" class="pill"></span></h3><input id="isearch" placeholder="Search...">
+<div class="tabs" id="itabs"><button data-c="" class="on">All</button><button data-c="Chemical">Chemicals</button><button data-c="Dye">Dyes</button></div>
+<div id="ilist" class="ilist"></div></div></div></section>
+
+<section id="rec" class="page"><h2>Records &amp; Report</h2><div class="box"><div class="row">
+<label>From<input type="date" id="rf"></label><label>To<input type="date" id="rt"></label>
+<label>🔍 Batch No Search<input id="rq" placeholder="Type batch no (all dates)"></label>
+<button class="btn" id="rgo">Show</button><button class="btn ghost" id="rpdf">⬇ PDF</button><button class="btn ghost" id="rxls">📊 Excel</button></div>
+<div class="cards" id="rcards"></div></div>
+<div class="box"><h3>Batches <small>(click to view items)</small></h3><div class="tw"><table id="rtab"></table></div></div>
+<div class="box" id="dbox"><h3>Daily summary</h3><div class="tw"><table id="dtab"></table></div></div>
+<div class="box"><h3>Backup</h3><button class="btn ghost" id="bkp">💾 Download Backup</button>
+<label class="btn ghost" style="margin:4px 6px 10px 0">⬆ Restore Backup<input type="file" id="rst" accept=".json" hidden></label>
+<p class="note">Data is saved in this browser only. Download a backup regularly.</p></div></section>
+</main>
+<div id="modal" class="modal"><div class="mc"><button class="x" id="mx">✕</button><h3 id="mt"></h3><div id="mb"></div></div></div>
+<div id="toast"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+<script src="items.js"></script><script src="app.js"></script></body></html>
